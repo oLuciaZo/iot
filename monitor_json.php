@@ -24,6 +24,7 @@ while ($row = mysqli_fetch_row($result))
     $outp .= '"macaddress":"'   . $row["1"]        . '",';
     $outp .= '"humidity":"'   . $row["2"]        . '",';
     $outp .= '"temp":"'   . $row["3"]        . '",';
+    $outp .= '"temp_heat":"'   . $row["5"]        . '",';
 	  $outp .= '"time":"'. $row["4"]     . '"},';
 
 }

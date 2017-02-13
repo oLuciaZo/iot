@@ -2,7 +2,7 @@
   "uploadOnSave": true,
   "useAtomicWrites": false,
   "deleteLocal": false,
-  "hostname": "192.168.99.102",
+  "hostname": "192.168.1.100",
   "port": "22",
   "target": "/var/www/html/iot/",
   "ignore": [

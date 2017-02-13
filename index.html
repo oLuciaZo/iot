@@ -60,7 +60,7 @@ for (var i = 0; i < jsonData.monitor.length; i++) {
     cell4.innerHTML = counter.humidity;
     cell5.innerHTML = counter.temp;
     cell6.innerHTML = counter.time;
-    if(counter.temp<50){
+    if(counter.temp<counter.temp_heat){
     	cell7.innerHTML = "Normal";
     }else{
     	cell7.innerHTML = "Critical";

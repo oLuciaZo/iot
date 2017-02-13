@@ -69,7 +69,7 @@ class DB_Functions {
     public function getAllDevices($con){
       //$con = mysqli_connect("localhost", "sitita", "x]vf4ypfu", "iot");
       //$result = mysqli_query($con,"SELECT `int_name`,`data_mac`,`data_humidity`,`data_temp`,`data_time` FROM ( SELECT * FROM `iot_data` ORDER BY `data_time` DESC ) AS t1 INNER JOIN iot_inventory ON `data_mac` = `int_mac` WHERE `data_time` >= CURDATE() GROUP BY `data_mac`");
-      $result = mysqli_query($con,"SELECT `int_name`,`data_mac`,`data_humidity`,`data_temp`,`data_time` FROM iot_data INNER JOIN iot_inventory ON `data_mac` = `int_mac` WHERE data_no IN (SELECT MAX(data_no) FROM iot_data GROUP BY data_mac)  AND `data_time` >= NOW() - INTERVAL 15 MINUTE");
+      $result = mysqli_query($con,"SELECT `int_name`,`data_mac`,`data_humidity`,`data_temp`,`data_time`,`int_temp` FROM iot_data INNER JOIN iot_inventory ON `data_mac` = `int_mac` WHERE data_no IN (SELECT MAX(data_no) FROM iot_data GROUP BY data_mac)  AND `data_time` >= NOW() - INTERVAL 15 MINUTE");
       return $result;
     }
     public function getDownDevices($con){
