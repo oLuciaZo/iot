@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Pi Technology Engine</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+        <script>
+function querydevices(){
+var xmlhttp = new XMLHttpRequest();
+var url = "inventory_json.php";
+xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        myFunction(xmlhttp.responseText);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(response) {
+	var table = document.getElementById("myTable");
+	var tableRows = table.getElementsByTagName('tr');
+	var rowCount = tableRows.length;
+	for (var x=rowCount-1; x>0; x--) {
+   		table.deleteRow(x);
+}
+    var jsonData = JSON.parse(response);
+for (var i = 0; i < jsonData.inventory.length; i++) {
+    var counter = jsonData.inventory[i];
+    var row = table.insertRow();
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		var cell4 = row.insertCell(3);
+    /*if((i%2)==0){
+    row.style.backgroundColor = "#3d4449";
+    } else {
+    row.style.backgroundColor = "#7f888f";
+	}*/
+    //row.style.color = "#000000";
+    cell1.innerHTML = i+1;
+		cell2.innerHTML = counter.name;
+    //cell2.innerHTML = '<a href="somepage.htm?varName=' + counter.hostname + '">click me</a>';
+    cell3.innerHTML = '<a href="inventory.php?macaddr=' + counter.macaddress + '&name=' + counter.name + '&temp=' + counter.temp + '" >'+counter.macaddress+'</a>';
+		cell4.innerHTML = counter.temp;
+    //console.log(counter.hostname);
+}
+
+		}
+		setTimeout(function(){ querydevices(); }, 10000);
+
+}
+
+function createTable(){
+	console.log("OK");
+
+}
+
+
+</script>
+	</head>
+	<body onload="querydevices()">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Pi Technology Engine</strong></a>
+
+								</header>
+
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>Inventory
+											</h1>
+										</header>
+										<!--put the table here-->
+										<div id="Table" align="center">
+									  	<table id="myTable" width="800" bgcolor="" border="0"  bordercolorlight="white" cellspacing="0" cellpadding="0">
+									  <tr bgcolor="">
+									    <td><h3>No<h3></td>
+											<td><h3>Name<h3></td>
+									    <td><h3>MAC Address<h3></td>
+											<td><h3>Temp<h3></td>
+									  </tr>
+									</table>
+									  	</div>
+									</div>
+
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Technology</h2>
+									</header>
+									<div class="features">
+										<article>
+
+										</article>
+
+									</div>
+								</section>
+
+							<!-- Section -->
+								<section>
+								<!--	<header class="major">
+										<h2>Ipsum sed dolor</h2>
+									</header>
+									<div class="posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+											<h3>Interdum aenean</h3>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+											<ul class="actions">
+												<li><a href="#" class="button">More</a></li>
+											</ul>
+										</article>
+
+									</div>-->
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Monitoring</a></li>
+										<li><a href="inventory.html">Inventory</a></li>
+										<li>
+										<span class="opener">Settings</span>
+										<ul>
+											<li><a href="email.html">Email</a></li>
+											<li><a href="interface_setup.php">Network</a></li>
+										</ul>
+									</li>
+									</ul>
+								</nav>
+
+							<!-- Section
+								<section>
+									<header class="major">
+										<h2>Ante interdum</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section>
+
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<p>Pi Technology</p>
+								<ul class="contact">
+									<li class="fa-envelope-o"><a href="#">charuraks@gmail.com</a></li>
+									<li class="fa-phone">+6683-543-1474</li>
+									<li class="fa-home">1234 Somewhere Road #8254<br />
+									Nashville, TN 00000-0000</li>
+								</ul>
+							</section>
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
