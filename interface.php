@@ -1,7 +1,12 @@
 <?php
+if(empty($_POST['ipaddress'])){
+  header("Location: index.html");
+}else{
 $ip = $_POST['ipaddress'];
 $net = $_POST['netmask'];
 $gw = $_POST['gateway'];
+$dns = $_POST['dns'];
+
 //print $ip = $_POST['ipaddress'];
 //print $net = $_POST['netmask'];
 //print $gw = $_POST['gateway'];
@@ -37,14 +42,14 @@ echo fwrite($file,"iface enp0s3 inet static"."\n");
 echo fwrite($file,"address $ip"."\n");
 echo fwrite($file,"netmask $net"."\n");
 //echo fwrite($file,"network 192.168.1.0"."\n");
-//echo fwrite($file,"broadcast 192.168.1.255"."\n");
 echo fwrite($file,"gateway $gw"."\n");
+echo fwrite($file,"dns-nameservers 8.8.8.8 8.8.4.4"."\n");
 echo fwrite($file,"\n");
 echo fwrite($file,"auto enp0s8"."\n");
 echo fwrite($file,"iface enp0s8 inet dhcp"."\n");
 fclose($file);
-header("Location: index.html");
+
 shell_exec('sh /home/sitita/reboot.sh');
 
-
+}
  ?>

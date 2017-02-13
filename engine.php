@@ -61,6 +61,7 @@ while ($row = mysqli_fetch_row($result_critical)){
     }
     sendmail($SMTPAuth,$SMTPSecure,$Host,$Port,$Username,$Password,$From,$Subject,$outp);
     foreach ($data_no as $data) {
+      print $data."\n";
       $db->updateFlag($data,$con);
     }
     $outp="";

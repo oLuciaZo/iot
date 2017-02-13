@@ -85,7 +85,8 @@ class DB_Functions {
     }
 
     public function getCriticalDevices($con){
-      $result = mysqli_query($con,"SELECT `data_no`,`int_name`,`data_mac`,`data_humidity`,`data_temp`,`int_temp`,`data_time`, `data_flag` FROM ( SELECT * FROM `iot_data` ORDER BY `data_time` DESC ) AS t1 INNER JOIN iot_inventory ON `data_mac` = `int_mac` WHERE `data_temp` > `int_temp` AND `data_flag` = '1' GROUP BY `data_mac`");
+      $result = mysqli_query($con,"SELECT `data_no`,`int_name`,`data_mac`,`data_humidity`,`data_temp`,`int_temp`,`data_time`,`data_flag` FROM ( SELECT * FROM `iot_data` ORDER BY `data_time` DESC ) AS t1 INNER JOIN iot_inventory ON `data_mac` = `int_mac` WHERE `data_temp` > `int_temp` AND `data_time` > NOW() - INTERVAL 15 MINUTE AND `data_flag` = '1' GROUP BY `data_mac`");
+      //$result = mysqli_query($con,"SELECT `data_no`,`int_name`,`data_mac`,`data_humidity`,`data_temp`,`int_temp`,`data_time`, `data_flag` FROM ( SELECT * FROM `iot_data` ORDER BY `data_time` DESC ) AS t1 INNER JOIN iot_inventory ON `data_mac` = `int_mac` WHERE `data_temp` > `int_temp` AND `data_flag` = '1' GROUP BY `data_mac`");
       return $result;
     }
 

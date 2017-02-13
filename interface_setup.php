@@ -82,6 +82,15 @@
 
 									</td>
 									</tr>
+									<tr>
+										<td>
+											DNS
+										</td>
+										<td>
+									<input type="text" name="dns" id="dns" value="" />
+
+								</td>
+								</tr>
 											<tr>
 												<td>
 												<button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Save</button>
