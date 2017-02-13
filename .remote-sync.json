@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "192.168.99.102",
+  "port": "22",
+  "target": "/var/www/html/iot/",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "sitita",
+  "password": "\\",
+  "watch": [],
+  "transport": "scp"
+}
