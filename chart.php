@@ -49,7 +49,7 @@ function graph(){
 			tmp = counter.time;
 
 }
-	var a = ['1','2','3','4','5','677'];
+	//var a = ['1','2','3','4','5','677'];
 	var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
@@ -121,7 +121,7 @@ var myChart = new Chart(ctx, {
 										</header>
 										<!--put the table here-->
 										<div class="content">
-										<canvas id="myChart" width="50" height="50"></canvas>
+
 									</div>
 
 
@@ -131,7 +131,7 @@ var myChart = new Chart(ctx, {
 								<section>
 									<header class="major">
 										<!--<h2>Technology</h2>-->
-
+										<canvas id="myChart"></canvas>
 									</header>
 									<div class="features">
 
